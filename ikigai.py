@@ -35,6 +35,24 @@ def recommend_passion(answers):
             return passions
     return ["Couldn't identify a clear passion. Explore general areas like arts, tech, or sports!"]
 
+# Function to provide guidance for each passion
+def get_guidance(passion):
+    guidance = {
+        "Travel Blogger": "Start by creating a travel blog and documenting your trips. Use social media to grow an audience, collaborate with brands, and monetize your blog. Take courses in digital marketing and blogging platforms.",
+        "Software Developer": "Learn programming languages (e.g., Python, JavaScript) through online tutorials. Build projects to showcase your skills and start contributing to open-source. Consider taking a Computer Science degree or coding bootcamps.",
+        "Chef": "Begin by working in a kitchen to gain hands-on experience. Consider culinary school and create a portfolio by experimenting with recipes and sharing them online. Look into programs from institutions like Le Cordon Bleu or local culinary schools.",
+        "Fashion Designer": "Start by learning design software, sketching designs, and experimenting with fabrics. Intern with established designers and start creating your own collections. You can pursue a degree in Fashion Design or take online courses like those from the Fashion Institute of Technology.",
+        "Psychologist": "Study psychology at a university and gain clinical experience through internships. Pursue a Master's or PhD to specialize in a particular area. Consider enrolling in psychology programs such as Clinical or Counseling Psychology.",
+        "Entrepreneur": "Identify a problem to solve, build a business plan, and start small. Learn from failure and scale your business gradually by networking and securing funding. You may consider programs like MBA or startup accelerators.",
+        "Game Developer": "Learn programming and game design. Start with engines like Unity or Unreal Engine. Take courses in Game Design, 3D modeling, or C# programming. There are many online resources such as Udemy and Coursera.",
+        "Healthcare Administrator": "Pursue a degree in Health Administration or Public Health. You may also explore certifications in healthcare management. Learn about hospital operations, budgeting, and policy.",
+        "Artist": "Start by practicing drawing, painting, or digital art daily. Take classes to refine your technique, whether in fine arts or digital tools. Programs like those from the Savannah College of Art & Design (SCAD) can be helpful.",
+        "Business Analyst": "Learn about data analysis, business processes, and project management. You might consider a degree in Business Administration or certifications in data analysis and Agile methodologies.",
+        "Environmental Scientist": "Get a degree in Environmental Science and specialize in areas like ecology, sustainability, or climate change. Look into certifications or advanced studies in GIS (Geographic Information Systems) or environmental policy.",
+        # Add more specific guides for other passions
+    }
+    return guidance.get(passion, "Start by learning more about the field, taking relevant courses, and practicing your skills. You can always look for online resources, such as Coursera, edX, or Udemy, for relevant courses.")
+
 # Streamlit UI
 st.title("Discover Your Passion for Free!")
 questions = [
@@ -54,3 +72,5 @@ if st.button("Find My Passion"):
     st.write("Here are some possible passions for you:")
     for suggestion in suggestions:
         st.write(f"- {suggestion}")
+        guidance = get_guidance(suggestion)
+        st.write(f"How to get started: {guidance}")
